@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 source ~/.bashrc
 
 # Install extra shared dotfiles
-[ ! -L ~/.oh-my-zsh/custom ] rm -rf ~/.oh-my-zsh/custom && ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.oh-my-zsh/custom ~/.oh-my-zsh/custom
+[ ! -L ~/.oh-my-zsh/custom ] && rm -rf ~/.oh-my-zsh/custom && ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.oh-my-zsh/custom ~/.oh-my-zsh/custom
 
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
