@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+alias pulld='git pull origin develop'
+alias dpush='git push origin develop'
+alias dpull='git pull origin develop'
+alias pushm='git push origin main'
+alias pullm='git pull origin main'
+alias mpush='git push origin main'
+alias mpull='git pull origin main'
+alias cod='git checkout develop'
+alias com='git checkout main'
+
+alias edit='code .'

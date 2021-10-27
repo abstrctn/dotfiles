@@ -1,0 +1,10 @@
+[user]
+	name = abstrctn
+	email = abstrctn@github.com
+[init]
+	defaultBranch = main
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
