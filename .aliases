@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 alias pulld='git pull origin develop'
 alias dpush='git push origin develop'
