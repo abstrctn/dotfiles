@@ -1,7 +1,9 @@
-# This is used only in codespaces
+# This is used only in codespaces (not symlinked locally)
 
 export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=/workspaces/.codespaces/.persistedshare/dotfiles/.oh-my-zsh/custom
+
+# Install extra shared dotfiles
+rm -rf ~/.oh-my-zsh/custom && ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.oh-my-zsh/custom ~/.oh-my-zsh/custom
 
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
