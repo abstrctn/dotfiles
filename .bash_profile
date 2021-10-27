@@ -1,11 +1,6 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
-export START=~/github.com
-if [[ $PWD == $HOME ]]; then
-  cd $START
-fi
-
 setopt PROMPT_SUBST
 autoload -U colors && colors
 
