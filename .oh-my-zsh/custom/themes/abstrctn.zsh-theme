@@ -12,7 +12,7 @@ __zsh_prompt() {
     
     PROMPT="%{$fg[green]%}${prompt_username}" # User/exit code arrow
     PROMPT+='%{$fg[white]%}%(5~|%-1~/…/%3~|%4~)%{$reset_color%}' # cwd
-    PROMPT+='%{$fg[yellow]%}$(parse_git_branch)%{$reset_color%}' # branch
+    PROMPT+='%{$fg[yellow]%}$(parse_git_branch)%{$reset_color%}' # git branch
     PROMPT+='%(?:%{$fg[white]%}$:%{$fg[red]%}$) %{$reset_color%}' # end of prompt for input
     unset -f __zsh_prompt
 }
