@@ -11,3 +11,5 @@ alias cod='git checkout develop'
 alias com='git checkout main'
 
 alias edit='code .'
+
+alias pr='gh pr create --web'
