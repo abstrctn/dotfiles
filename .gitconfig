@@ -1,6 +1,7 @@
 [user]
-	name = abstrctn
+	name = Michael Strickland
 	email = abstrctn@github.com
+	signingkey = DE20B954B43FCCDE
 [init]
 	defaultBranch = main
 [alias]
@@ -8,3 +9,11 @@
 	br = branch
 	ci = commit
 	st = status
+[url "git@github.com:"]
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
