@@ -3,6 +3,9 @@
 export EDITOR=vim
 export ZSH_THEME=abstrctn
 
+# Suppress pager when content can be shown on one screen
+export LESS="-FRX"
+
 # Enable persistent REPL history for `node`.
 export NODE_REPL_HISTORY=~/.node_history;
 # Allow 32³ entries; the default is 1000.
