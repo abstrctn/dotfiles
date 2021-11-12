@@ -1,1 +1,20 @@
 #!/usr/bin/env bash
+
+# Returns the (first) codespace found for the current repo
+function get-codespace() {
+  nwo=$(gh repo view --json nameWithOwner --jq .nameWithOwner)
+  if [ $? -ne 0 ]; then
+    return 1
+  fi
+
+  codespace=$(gh codespace list \
+    --json name,repository \
+    | jq -j '[.[] | select(.repository == "'$nwo'")] | first | .name // ""')
+
+  if [ -z "$codespace" ]; then
+    >&2 echo "No active codespace found."
+    return 1
+  fi
+
+  echo "$codespace"
+}

@@ -13,3 +13,6 @@ alias com='git checkout main'
 alias edit='code .'
 
 alias pr='gh pr create --web'
+
+# Connect to an active codespace
+alias cs='gh codespace ssh -c `get-codespace` -- zsh -il'
