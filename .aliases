@@ -16,3 +16,4 @@ alias pr='gh pr create --web'
 
 # Connect to an active codespace
 alias cs='gh codespace ssh -c `get-codespace` -- zsh -il'
+alias cscode='open "vscode://github.codespaces/connect?name=`get-codespace`"'
