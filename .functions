@@ -18,3 +18,7 @@ function get-codespace() {
 
   echo "$codespace"
 }
+
+function csdiff() {
+  code $(git diff --name-only $@)
+}
