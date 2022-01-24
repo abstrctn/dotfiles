@@ -19,6 +19,80 @@ function get-codespace() {
   echo "$codespace"
 }
 
+## For codespaces
+
 function csdiff() {
   code $(git diff --name-only $@)
+}
+
+function last-repo() {
+  env=${1:-test}
+  find /workspaces/github/repositories/$env -type d -name '*.git' -printf "%T+ %p\n" | sort | tail -1 | awk '{print $2}'
+}
+
+function graph-repo() {
+  env=${1:-test}
+  # git -C $(find repositories/test -type d -name '*.git' | head -1) log --graph --oneline --all
+  git -C $(last-repo $env) log --graph --oneline --all
+}
+
+## Local for codespaces
+
+# MERGE_CONFLICT=1
+function create-test-repo() {
+  export GIT_COMMITTER_NAME=monalisa
+  export GIT_COMMITTER_EMAIL=octocat@github.com
+  repo=${1:-test1}
+
+  curl -XDELETE -H "Authorization: Bearer $MONA_TOKEN" http://api.github.localhost/repos/monalisa/$repo
+  curl -XPOST -H "Authorization: Bearer $MONA_TOKEN" http://api.github.localhost/user/repos -d '{"name": "'$repo'"}'
+
+  cd ~/github.com/abstrctn
+  
+  rm -rf $repo
+
+  git init $repo
+  cd $repo
+  git branch -M main
+
+  echo 1 > file1
+  git add .
+  git ci -m "file1" --date 2022-01-15T12:00:00
+
+  git co -b branch-1
+  echo 2 > file2
+  git add .
+  git ci -m "file2" --date 2022-01-15T12:10:00
+
+  git co main
+  echo 2 >> file1
+  git add .
+  git ci -m "file1 update" --date 2022-01-15T12:20:00
+
+  if [ "$MERGE_CONFLICT" -eq 1 ]; then
+    git co branch-1
+    echo 3 > file1
+    git add .
+    git ci -m "conflict to file1" --date 2022-01-15T12:30:00
+  fi
+
+  curl -XDELETE -H "Authorization: token $MONA_TOKEN" http://api.github.localhost/repos/monalisa/$repo
+  sleep 1
+  curl -XPOST -H "Authorization: token $MONA_TOKEN" http://api.github.localhost/user/repos -d '{"name": "'$repo'"}'
+  sleep 3
+
+  git remote add origin http://${MONA_TOKEN}@github.localhost/monalisa/$repo.git
+  git push --all -u origin
+
+  git co branch-1
+
+  git log --graph --oneline --all
+
+  curl -XPOST -H "Authorization: Bearer $MONA_TOKEN" http://api.github.localhost/repos/monalisa/$repo/pulls -d '{"head": "branch-1", "base": "main", "title": "test"}'
+  open http://github.localhost/monalisa/test1/pull/1
+}
+
+function graph() {
+  env=${1:-test}
+  gh codespace ssh -c $(cd ~/github.com/github/github && get-codespace) -- -t zsh -ic 'graph-repo\ '$env
 }
