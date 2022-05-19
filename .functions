@@ -3,10 +3,7 @@
 # Returns the (most recent) codespace found for the current repo
 function get-codespace() {
   nwo=$(gh repo view --json nameWithOwner --jq .nameWithOwner)
-  if [ $1 = "new" ]; then
-    gh cs create -r $nwo -b ""
-    return 0
-  elif [ $? -ne 0 ]; then
+  if [ $? -ne 0 ]; then
     return 1
   fi
 
@@ -19,7 +16,7 @@ function get-codespace() {
     return 1
   fi
 
-  echo "$codespace"`
+  echo "$codespace"
 }
 
 function clone() {
