@@ -11,9 +11,19 @@ alias cod='git checkout develop'
 alias com='git checkout main'
 
 alias edit='code .'
+alias notes='code ~/github.com/abstrctn/dendron/dendron.code-workspace'
 
-alias pr='gh pr create --web'
+alias pr='gh pr view --web || gh pr create --web'
+alias debug='BYEBUGDAP=1 GITHUB_CODESPACES_CUSTOM_PORT=1 script/server --debug'
 
 # Connect to an active codespace
 alias cs='gh codespace ssh -c `get-codespace` -- zsh -il'
 alias cscode='open "vscode://github.codespaces/connect?name=`get-codespace`"'
+alias ghcode='cd ~/github.com/github/github && cscode'
+
+# Building git
+alias inflate='ruby -r zlib -e "STDOUT.write Zlib::Inflate.inflate(STDIN.read)"'
+
+alias view-bplist='plutil -convert xml1 -r -o - -- -'
+
+alias python=/usr/local/bin/python3

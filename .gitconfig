@@ -14,6 +14,17 @@
 	pushInsteadOf = "github:"
 	pushInsteadOf = "git://github.com/"
 [commit]
-	gpgsign = true
+	gpgsign = false
 [gpg]
 	program = gpg
+[github]
+	user = abstrctn
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

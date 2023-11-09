@@ -1,0 +1,3 @@
+PATH=~/github.com/jcoglan/scratch/bin:$PATH
+PATH=~/github.com/abstrctn/dotfiles/bin:$PATH
+PATH=~/.rvm/gems/ruby-3.0.0/bin:$PATH

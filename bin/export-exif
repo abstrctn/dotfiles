@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# export-exif $(ls -d ~/Pictures/Edited/2022-06-06/large/*)
+
+exiftool "$@" -csv \
+  -Aperture \
+  -ExposureTime \
+  -FocalLength \
+  -ISO \
+  -LensModel \
+  -DateTimeOriginal \
+  | sed 's/^[^,]*,//g' \
+  | sed 's/.0 mm//g' \
+  | tr ',' '\t'

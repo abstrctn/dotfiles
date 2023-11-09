@@ -49,6 +49,10 @@ function graph-repo() {
   git -C $(last-repo $env) log --graph --oneline --all
 }
 
+function okta-keychain() {
+  security find-generic-password -l device_trust '-w'
+}
+
 function gc-last-repo() {
   git_repo=$(last-repo development)
   PATH=/workspaces/github/vendor/gitrpcd/build:/workspaces/github/vendor/git-core/bin:$PATH
@@ -60,6 +64,10 @@ function gc-last-repo() {
       git nw-gc --pristine
     fi
   done
+}
+
+function exif() {
+  curl -s $(pbpaste) | identify -verbose -
 }
 
 ## Local for codespaces
