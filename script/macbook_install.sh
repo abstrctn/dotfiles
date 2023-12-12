@@ -2,7 +2,7 @@
 
 dotfiles=~/github.com/abstrctn/dotfiles
 
-for file in {path,bash_prompt,exports,aliases,functions,extra,gitconfig}; do
+for file in {path,bash_prompt,bashrc,bash_profileexports,aliases,functions,extra,gitconfig}; do
   [ ! -f ~/.$file ] && [ -f $dotfiles/.$file ] && ln -s $dotfiles/.$file ~/.$file;
 done;
 

@@ -8,8 +8,14 @@ source ~/.bashrc
 # Install extra shared dotfiles
 [ ! -L ~/.oh-my-zsh/custom ] && rm -rf ~/.oh-my-zsh/custom && ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.oh-my-zsh/custom ~/.oh-my-zsh/custom
 
+# ZSH_THEME=abstrctn
+
+source ~/.exports
+source ~/.functions
+source ~/.aliases
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
+
 
 DISABLE_AUTO_UPDATE=true
 DISABLE_UPDATE_PROMPT=true
